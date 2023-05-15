@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+
+<html>
+  
+  <head>  
+    <title>Visual Scripting Bolt Bible| 1.4.12 </title>   
+    <link rel="stylesheet" href="css/style.css"> 
+  </head>
+  
+  <body class="body">
+
+    <!--SUMMARY-->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="visual-scripting-with-bolt">Visual Scripting with Bolt SUMMARY</h1>
+
+        <p>Bolt is a visual scripting solution for use within Unity.</p>
+        <p><span class="textefluide">Use Bolt to develop and work on your application without having to write code.</span></p>
+        <p>
+            <span class="soustitre">Basic Concepts</span>
+        </p>
+        <p>Learn about core concepts such as types, variables and graphs.</p>
+        <p>
+          <span class="soustitre">Flow Graphs</span>
+        </p>
+        <p>Learn how to use Flow Graphs, your main tool to build logic.</p>
+        <p>
+          <span class="soustitre">State Graphs</span>
+        </p>
+        <p>Take your organization to the next level with State Graphs, high-level FSMs.</p>
+        <p>
+          <span class="soustitre">Scripting</span>
+        </p>
+        <p>Learn how to communicate between Bolt and your C# scripts.</p>
+        <p>
+          <span class="soustitre">Advanced Topics</span>
+        </p>
+        <p>Get the details on some of Bolt&#39;s inner workings and advanced</p>
+        <p>
+          <span class="soustitre">Unit Reference</span>
+        </p>
+        <p>The manual for units like self, events and variables.</p>
+      </div>
+    </div>
+
+    <!--SUMMARY BASIC CONCEPT -->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="basic-concepts">Basic Concepts SUMMARY</h1>
+
+        <p>
+          <span class="soustitre">Types</span>
+        </p>
+        <p>What are floats, strings, booleans, vectors, etc.?</p>
+        <p>
+          <span class="soustitre">Variables</span>
+        </p>
+        <p>Variables are containers in which you store values and data.</p>
+        <p>
+          <span class="soustitre">Graphs, Machines and Macros</span>
+        </p>
+        <p>Learn the Bolt terminology for graphs, components and assets.</p>
+        <p>
+          <span class="soustitre">Groups</span>
+        </p>
+        <p>Organize your nodes in neat little boxes.</p>
+      </div>
+    </div>
+
+    <!--BASIC CONCEPT TYPES-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="types">Types</h1>
+
+        <p>In modern scripting, everything is an Object: numbers, pieces of text, vectors and Unity components are all objects. </p>
+        <p><span class="textefluide">To differentiate what they represent and what they can do, each object has a Type. In Bolt, most types are represented with an icon.</span></p>
+        <p>There are hundreds of types available in Unity and Bolt, but you don&#39;t need to know each of them by heart. </p>
+        <p><span class="textefluide">However, you should be familiar with the most common types. Here&#39;s a little summary table:</span></p>
+        <table>
+        <thead>
+        <tr>
+        <th>Type</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Float</td>
+        <td>A number with or without decimal values, like 0.5 or 13.25.</td>
+        </tr>
+        <tr>
+        <td>Integer</td>
+        <td>A number without any decimal value, like 3 or 200.</td>
+        </tr>
+        <tr>
+        <td>Boolean</td>
+        <td>A value that can only be either true or false. Commonly used in logic or in toggles.</td>
+        </tr>
+        <tr>
+        <td>String</td>
+        <td>A piece of text, like a name or a message.</td>
+        </tr>
+        <tr>
+        <td>Char</td>
+        <td>ne single character in a string, often alphabetic or numeric. Rarely used.</td>
+        </tr>
+        <tr>
+        <td>Enums</td>
+        <td>There are many enums. Each one is a finite enumeration of options that are often seen in dropdowns.<br> For example, in Unity, the &quot;Force Mode&quot; enum can be either &quot;Force&quot;, &quot;Impulse&quot;, &quot;Acceleration&quot; or &quot;Velocity Change&quot;.</td>
+        </tr>
+        <tr>
+        <td>Vectors</td>
+        <td>Vectors represent a set of float coordinates, for example for positions or directions.<br>There are 3 vectors in Unity:<br>Vector 2, with X and Y coordinates for 2D;<br>Vector 3, with X, Y and Z coordinates for 3D;<br>Vector 4, with X, Y, Z and W coordinates, rarely used.</td>
+        </tr>
+        <tr>
+        <td>GameObject</td>
+        <td>Gameobjects are the base entity in Unity scenes. Each game object has a name, a transform for its position and rotation, and a list of components.</td>
+        </tr>
+        <tr>
+        <td>Lists</td>
+        <td>A list is an ordered collection of elements. The elements can be of any type, but most often, all elements of a list must be of the same type. You can retrieve and assign each element in a list by its zero-based index (position).</td>
+        </tr>
+        <tr>
+        <td>Dictionaries</td>
+        <td>A dictionary is a collection in which element has a unique key that maps to its value. For example, you could have a dictionary of age (integer values) by name (string key). You can retrieve and assign each element by its key.</td>
+        </tr>
+        <tr>
+        <td>Object</td>
+        <td>&quot;Object&quot; is a special type. Like we said, every other type is also an object. But when you see, for example, that a node asks for an object, it usually means that it doesn&#39;t care about the type of that object.</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--BASIC CONCEPT VARIABLES-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="variables">Variables</h1>
+
+        <p>Variables are containers. Each variable has a name, a type, and a value.</p>
+        <p>The value inside a variable can change during runtime, which is why they&#39;re called vary-ables.</p>
+        <p>In Bolt, there are 6 kinds of variables:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Kind</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Flow Variables</td>
+        <td>Flow variables which are the equivalent to local variables.</td>
+        </tr>
+        <tr>
+        <td>Graph Variables</td>
+        <td>Graph variables are local to an instance of a flow graph. They have the smallest scope and cannot be accessed or modified outside their graph.</td>
+        </tr>
+        <tr>
+        <td>Object Variables</td>
+        <td>Object variables belong to a game object. They are shared across all graphs on that game object.</td>
+        </tr>
+        <tr>
+        <td>Scene Variables</td>
+        <td>Scene variables are shared across the current scene.</td>
+        </tr>
+        <tr>
+        <td>Application Variables</td>
+        <td>Application variables persist even when the scene changes. They will be reset once the application quits.</td>
+        </tr>
+        <tr>
+        <td>Saved Variables</td>
+        <td>Saved variables will persist even after the application quits. They can be used as a simple but powerful save system. They are saved in Unity&#39;s player prefs, which means they unfortunately can&#39;t refer to Unity objects like game objects and components.</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="the-variables-window">The variables window</h3>
+        <p>The variables window can be opened via <strong>Windows &gt;
+        Variables</strong>. It contains one tab per kind of variable. The graph
+        tab is only enabled if a flow graph is selected, and the object tab is
+        only enabled if a game object is selected.</p>
+        <h3 id="adding-a-variable">Adding a variable</h3>
+        <ol>
+        <li>Choose the tab corresponding to the kind of variable you want to add</li>
+        <li>Type the name of the new variable in the New Variable Name field</li>
+        <li>Click the plus button</li>
+        <li>Choose its type</li>
+        <li>(Optional) Change its default value</li>
+        </ol>
+        <p><img src="images/bolt-variables2.gif" alt=""></p>
+        <h3 id="saved-and-initial-variables">Saved and Initial Variables</h3>
+        <p>You may notice that under the Saved tab, there are two sub-tabs: Initial and Saved.</p>
+        <p>In the initial tab, you define values that will automatically created for new games.</p>
+        <p>In the saved tab, you can see the state of saved variables for your current computer. You can edit these manually or delete them all if you want to start anew.</p>
+        <h3 id="removing-headers">Removing Headers</h3>
+        <p>Once you get a good grip of how each kind of variable works, you can remove the headers in the variables window to save some screen real-estate. Simply uncheck Show Variables Help in Tools &gt; Bolt &gt; Editor Preferences....</p>
+        <h3 id="dynamic-variables">Dynamic Variables</h3>
+        <p>Variables <strong>don&#39;t</strong> need to be declared during edit mode! They can also
+        be created during play mode.</p>
+        <p>Setting the value of a variable that doesn&#39;t exist automatically creates
+        it. For example, this graph would create a new saved integer variable
+        named gold with a value of 250, even if we hadn&#39;t defined it before:</p>
+        <h3 id="visibility">Visibility</h3>
+        <p>Note that all object variables in Bolt are public and can be accessed by other objects.</p>
+      </div>
+    </div>
+
+    <!--BASIC CONCEPT GRAPHS MACHINES AND MACROS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="graphs-machines-and-macros">Graphs, Machines and Macros</h1>
+
+        <p>Graphs are visual representations of logic. They&#39;re at the core of Bolt.</p>
+        <p>There are two kinds of graphs:</p>
+        <ul>
+        <li><p>Flow Graphs, in which you connect individual actions and values in a specific order. That order of execution is what we call the flow. If you have used Unreal Engine before, you might find they are similar to the Blueprints visual scripting language.</p>
+        <ul>
+        <li>State Graphs, in which you create different states and the transitions between them. Each state acts as a little program. If you have used PlayMaker or other FSM (Finite State Machine) systems before, you&#39;re familiar with state graphs.</li>
+        </ul>
+        </li>
+        </ul>
+        <p>Together, these two kinds of graphs allow you to create any game you have in mind.</p>
+        <h3 id="when-to-use-each-kind-of-graph">When to use each kind of graph</h3>
+        <ul>
+        <li>You will most often use <strong>Flow Graphs</strong>.
+          They let you execute actions at every frame or when an event (like a
+          collision) occurs. Flow graphs have access to all the so-called
+          &quot;low-level&quot; logic, like branching, loops, math, etc. They best
+          answer the question &quot;when this happens, what should I do, and in
+          what order?&quot;.</li>
+        <li>You will use <strong>State Graphs</strong> when you
+          want to create so-called &quot;high-level&quot; logic, like AI behaviours,
+          scene or level structure, or anything that requires the notion of
+          <em>state</em>. For example, an enemy that has a &quot;patrol&quot;, &quot;chase&quot; and
+          &quot;attack&quot; states, or a door that has &quot;locked&quot;, &quot;unlocked&quot;, and &quot;open&quot;
+          states. State Graphs best answer the question &quot;what is my current
+          behaviour, and when should that change?&quot;.</li>
+        </ul>
+        <p>Each kind has its own full dedicated section in the manual, <a>Flow
+        Graphs</a>
+        and <a>State
+        Graphs</a>.
+        You should read them in this order. We will see later that you can
+        combine the two kinds of graphs: for example, each state node in a state
+        graph is actually a flow graph.</p>
+        <p>For now, let&#39;s just introduce some basic concepts that are shared for
+        both kinds of graphs.</p>
+        <h3 id="machines">Machines</h3>
+        <p>A <strong>Machine</strong> is a component that you add on a game object to execute the logic of a graph during play mode. There is one for each kind of graph: a Flow Machine and a <strong>State Machine</strong>. They are both located under the Bolt category.</p>
+        <p><img src="images/bolt-graphs3.gif" alt=""></p>
+        <p>You can also find them in the top level Unity menu.</p>
+        <p>Both have the same options in the inspector, so we&#39;ll just create a flow machine for this example.</p>
+        <p>You can give a title and summary to each graph to help identify them. They have no impact on functionality, but help with organization.</p>
+        <p>The Edit Graph button opens the graph of this machine in the graph window and the graph inspector. If you only have one machine on the same object, you won&#39;t need to use it, because Bolt automatically matches the graph to your selection.</p>
+        <h3 id="embeds-vs-macros">Embeds vs. Macros</h3>
+        <p>Let&#39;s take a look at the Source. You have two options: Embed or Macro.</p>
+        <table>
+        <thead>
+        <tr>
+        <th></th>
+        <th>Embed</th>
+        <th>Macro</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Relation</td>
+        <td>The graph is embedded in the machine itself.</td>
+        <td>The graph is a macro asset that isreferenced by the machine.</td>
+        </tr>
+        <tr>
+        <td>Re-usability</td>
+        <td>You cannot re-use the graph for other machines, but it will be shared across prefab instances.</td>
+        <td>You can re-use the same macro for multiple machines, even if they&#39;re not on the same prefab.</td>
+        </tr>
+        <tr>
+        <td>Permanence</td>
+        <td>If you remove the machine component, the graph will be deleted.The graph will also be deleted if you switch the Source to Macro.</td>
+        <td>If you remove the machine component, the macro asset will still exist. The graph will not be deleted if you switch the Source to Embed.</td>
+        </tr>
+        <tr>
+        <td>Scene Reference</td>
+        <td>The graph can refer to game objects from the current scene in its graph, as long as it&#39;s not saved as a prefab.</td>
+        <td>The graph cannot refer to game objects from the current scene, because it does not &quot;belong&quot; to any scene.</td>
+        </tr>
+        <tr>
+        <td>Prefabs</td>
+        <td>The machine should not be used if you instantiate your prefab while in the editor.</td>
+        <td>The machine can safely be used on all prefabs.</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="macros">Macros</h3>
+        <p>A <strong>Macro</strong> is a re-usable graph that can be referenced by multiple different machines that have their Source set to Macro.</p>
+        <p>If you switch the Source option of our machine to Macro, you&#39;ll see that you now have to tell the machine which macro it should use.</p>
+        <p>As you would expect, a Flow Machine requires a <strong>Flow Macro</strong> and a <strong>State Machine</strong> requires a State Macro.</p>
+        <p>To create a macro, right-click in an empty folder in your Project panel and choose Create &gt; Bolt &gt; (Flow / State) Macro. We recommend putting your macros in a top-level Macros folder, but that organization is entirely up to you and has no impact on functionality.</p>
+        <p><img src="images/bolt-graphs7.gif" alt=""></p>
+        <p>Then, you can simply drag-and-drop your new graph or use the Unity object picker to assign it to the machine.</p>
+        <h3 id="shared-live-update">Shared Live Update</h3>
+        <p>When you change a graph in a macro, that change will apply to all objects that have that macro attached to it. No need to have a unique macro for every instance of an object, or to ever copy-paste your changes.</p>
+        <p><img src="images/bolt-graphs9.gif" alt=""></p>
+        <h3 id="when-to-use-which-source">When to use which source</h3>
+        <p>As you might have seen from the table above, a macro is generally superior to an embed - it is reusable, not tied to the object, and works safely with prefabs. However, there is a very simple rule of thumb to determine which source to use use:</p>
+        <ul>
+        <li>Most often, you&#39;ll use a <strong>macro</strong>. Macros are faster to load and easier to maintain if your graph will be reused across one or more objects or scene.</li>
+        <li>For graphs that will only be used once in the current scene, you can use an <strong>embed</strong>. This will allow you to use <strong>scene references</strong>, which is very useful for <strong>GUI</strong>.</li>
+        </ul>
+        <h3 id="converting-the-source">Converting the Source</h3>
+        <p>At first, you might find it a bit confusing to choose whether you should use a macro or an embed graph. Don&#39;t worry: Bolt makes it simple to change your mind at any moment. It&#39;s common and normal to convert from one kind of source to the other.</p>
+        <h4 id="from-macro-to-embed">From Macro to Embed</h4>
+        <p>For example, if you were using a shared state macro for AI behaviour, but you then realize that this one enemy has special behaviour, you might want to convert your macro to an embed graph to modify it independently from the others.</p>
+        <p>To do so, simply click on the Convert button.</p>
+        <h4 id="from-embed-to-macro">From Embed to Macro</h4>
+        <p>For example, you might start working on an embed graph for movement on an enemy game object, but then realize you&#39;d want the same logic to apply to friendly NPC&#39;s. Therefore, you&#39;ll want to convert your embed graph to a macro for re-usability.</p>
+        <p>To do so, simply click on the Convert button and choose a path and file name for the new macro. Bolt will copy all the items in your embed graph to the macro (except scene references, which are not supported in macros). The machine will then automatically switch to macro mode and reference your new graph.</p>
+      </div>
+    </div>
+
+    <!--BASIC CONCEPT GROUPS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="groups">Groups</h1>
+
+        <p>Groups are simply boxes that help you organize your graph.</p>
+        <p>To create a group, select an area on the graph while holding the Ctrl key, or Cmd on Mac.</p>
+        <p>You can give each group a title that will be legible even when zoomed out.</p>
+        <p>You can select all items in a group by double-clicking its header.</p>
+        <p>When using the Unity control scheme, you can move the group without moving its contents by holding the Alt key and dragging its header.</p>
+        <p><img src="images/bolt-groups1.gif" alt=""></p>
+        <p>You can use the graph inspector to give a comment and a custom color to your group. The comment is only visible in the inspector.</p>
+      </div>
+    </div>
+
+    <!--SUMMARY FLOW GRAPHS-->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="flow-graphs">Flow Graphs SUMMARY</h1>
+
+        <p>
+          <span class="soustitre">Units and Ports</span>
+        </p>
+        <p>Units are the code nodes and actions in Bolt.</p>
+        <p>
+          <span class="soustitre">Connections and Relations</span>
+        </p>
+        <p>Connections are links between units and ports.</p>
+        <p>
+          <span class="soustitre">Predictive and Live Debugging</span>
+        </p>
+        <p>These tools help you debug before and during play mode.</p>
+        <p>
+          <span class="soustitre">Super Units</span>
+        </p>
+        <p>Super units are flow graphs that are grouped as a single reusable unit.</p>
+      </div>
+    </div>
+
+    <!--FLOW GRAPHS UNITS AND PORTS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="units-and-ports">Units and Ports</h1>
+
+        <p>Before starting this section of the manual, we assume that you&#39;re familiar with the Basic Conceptsand that you&#39;ve created a Flow
+        Machine.</p>
+        <p>At this point, you should have a flow graph with a Start and Update event.</p>
+        <h3 id="units">Units</h3>
+        <p><strong>Units</strong> are the most basic element of computation in Bolt. Other tools often call them &quot;nodes&quot; or &quot;actions&quot;. They are represented as nodes with input and output ports in flow graphs. Units can do a do a wide variety of things, for example listen for an event, get the value of a variable, invoke methods on components and game objects, etc.</p>
+        <p>Units use connections to indicate in what order they should be called and to pass values from one another. We&#39;ll cover connections in the next article. For now, let&#39;s focus on units and their ports.</p>
+        <h3 id="creating-units">Creating Units</h3>
+        <p>By default, there are over 23 000 available units in Bolt. They include the entire Unity scripting API, as well as all the methods and classes from your custom scripts or third party plugins. Finally, there are some additional utility units for math, logic, variables, loops, branching, events and coroutines.</p>
+        <p>Fortunately, these units are well organized in a simple, searchable creation menu called the fuzzy finder.</p>
+        <p>To display the fuzzy finder, simply right-click anywhere in the empty grid. You can then browse through the categories or search in the top field to quickly find a unit. Here, for example, we&#39;re adding a simple scalar addition (float + float) unit with both methods:</p>
+        <p>The first thing you&#39;ll notice is that your new units appear as dimmed out. This is because Bolt warns you that their value is never used. Indeed, we&#39;re not using the result of the addition anywhere, so these nodes are currently &quot;useless&quot;.</p>
+        <p>This is a very useful predictive debugging feature, but since we&#39;re not going to be connecting nodes until the next article, you might want to disable it to see what you&#39;re doing for now. You can toggle dimming with the Dim button in the toolbar:</p>
+        <p><img src="images/bolt-units3.gif" alt=""></p>
+        <p>The fuzzy finder gives you a preview documentation of each unit before you even create it. For example, for the add node, we can know what it does and what ports it has straight from the fuzzy finder:</p>
+        <h3 id="overloads">Overloads</h3>
+        <p>Some units have multiple variations, which are called overloads.</p>
+        <p>For example, there are 4 Add units: one for scalars, and one for 2D vectors, 3D vectors and 4D vectors. In this case, you can use their category to distinguish them.</p>
+        <p>Some method units have parameter overloads. Usually, these variations are for convenience and each will do roughly the same thing. Some overloads allow for more specific configuration than others.</p>
+        <p>For example, the Rotate Transform unit has 6 overloads. Two of them take the angles as a single euler angle vector, two other take it as 3 separate float components in X / Y / Z, and the last two take it as an angle relative to the axis. In each pair, one allows to specify the relative space, while the other just assumes that you&#39;re specifying angles in world space. Here&#39;s a screenshot of all 6 overloads for the rotate unit:</p>
+        <p>It might take some trial and error to find the right overload at first, but you&#39;ll quickly get used to the available options. You can use the built-in documentation or the Unity manual to help you distinguish between each variation.</p>
+        <p>Take a moment to explore the unit options and browse around the fuzzy finder. But don&#39;t worry if you&#39;re overwhelmed at first: we&#39;ll have a look at every kind of unit over the next few articles.</p>
+        <h3 id="reading-units">Reading Units</h3>
+        <p>Let&#39;s look at the anatomy of a unit. In this example, we created a Rotate Transform unit, which you can find under Codebase &gt; Unity Engine &gt; Transform &gt; Rotate (X, Y, Z, Relative To)</p>
+        <p>The top part of a unit is its header. It&#39;s a quick summary of what the unit does. In this case, it tells us that it is invoking the Rotate method on a Transform component.</p>
+        <p>You can tell the unit is selected because of the slight blue glow around its edge. When a unit is selected, its options and documentation will show in the Graph Inspector, which is placed on the right of the window in this screenshot.</p>
+        <h3 id="ports">Ports</h3>
+        <p><strong>Ports</strong> are hooks that you can use to connect nodes together.</p>
+        <p>On the left side, you&#39;ll find the <strong>Input Ports</strong>.</p>
+        <p>On the right side, you&#39;ll find <strong>Output Ports</strong>.</p>
+        <ul>
+        <li><strong>Control Ports</strong> are used to connect the <strong>Flow</strong>. Think of the flow as the order in which nodes should be executed. Flow always goes from left to right, hence the direction of the little arrow.</li>
+        <li><strong>Value Ports</strong> are used to connect... well, values. Each value port has a Type that must be matched when connecting nodes.</li>
+        </ul>
+        <h3 id="unit-inspector">Unit Inspector</h3>
+        <p>Let&#39;s break down the unit inspector:</p>
+        <ol>
+        <li>At the top, in the red rectangle, you can see the title and summary for the unit, which gives you a quick overview of what it does.</li>
+        <li>Below, in the blue rectangle, you have the unit&#39;s settings. They vary from unit to unit, and some units don&#39;t even need settings. In this case, we could change the method that we are invoking if we wanted.</li>
+        <li>In the green rectangle, you have the documentation for each port. First its name (e.g. &quot;X Angle&quot;), then its type (e.g. &quot;Float&quot;), and finally its summary (&quot;Degrees to rotate around the X axis&quot;).</li>
+        <li>Finally, in the yellow rectangle at the bottom, Bolt will display all the warnings for the unit. For example, here, Bolt warns us that the unit is never entered, because we never connected the &quot;Invoke&quot; control input port. If we had dimming enabled, this unit would therefore be dimmed out.</li>
+        </ol>
+        <h3 id="inline-values">Inline Values</h3>
+        <p>You&#39;ll have noticed by now that some value input ports have small fields next to them. These are called Inline Values. If the port is not connected, the value of this field will be used instead. Most common types support inline values, but not all types do. Inline values are useful to keep your graphs tidy by avoiding the creation of literal nodes for every value input port.</p>
+        <p>For example, these two graphs are exactly equivalent:</p>
+        <p>Now that we&#39;re familiar with units, let&#39;s have a look at how to create these connections!</p>
+      </div>
+    </div>
+
+    <!--FLOW GRAPHS CONNECTIONS AND RELATIONS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="connections-and-relations">Connections and Relations</h1>
+
+        <p>Let&#39;s start by creating a a simple graph with 3 units:</p>
+        <p>Update (under Events &gt; Lifetime): an event unit that fires at every frame.
+        Per Second (under Math &gt; Scalar): a math unit that returns the input value in a framerate-normalized way.
+        Rotate (under Codebase &gt; Unity Engine &gt; Transform): a method unit that rotates the given transform by the specified angles. For this example, we&#39;ll use the (X, Y, Z, Relative To) overload.</p>
+        <p>If you disabled the dimming from the toolbar in the last article (Dim), now would be a good time to re-enable it (Dim).</p>
+        <h3 id="connections">Connections</h3>
+        <p>To create a connection, you can either:</p>
+        <ul>
+        <li>Click on the first port, then click on the second port.</li>
+        <li>Click on the first port and hold, then release while over the second port.</li>
+        </ul>
+        <p>This graph reads as &quot;at every frame, rotate your own transform in the Y axis at a rate of 30 degrees per second&quot;.</p>
+        <p>There are two connections:</p>
+        <ul>
+        <li>A Control Connection between the Update event and the Rotate invocation.</li>
+        <li>A Value Connection between the result of the Per Second node and the Y Angle of the Rotate node.</li>
+        </ul>
+        <p>You&#39;ll notice that the nodes become fully visible as soon as they are in use.</p>
+        <p>To <strong>delete</strong> a connection, right-click on the any of the connected ports.</p>
+        <h3 id="highlight">Highlight</h3>
+        <p>When creating a connection, you&#39;ll notice that the compatible ports are highlighted.</p>
+        <p>Other ports are dimmed out. If a unit has no compatible port, it is dimmed out as well. You cannot create a connection if the target port is not highlighted.</p>
+        <p>For example, here, you cannot connect the result of the math operation (a number) to the target (a transform component), because there is no way to convert between a number and a transform component.</p>
+        <h3 id="automatic-port-selection">Automatic Port Selection</h3>
+        <p>Bolt will try to help you aim more easily by automatically selecting the best compatible port on a unit, even if your cursor is not directly over it. This port will be highlighted with a yellow rectangle to let you preview where the connection would happen. This means you can quickly drag the new connection directly on the unit without aiming directly on the little port handle.</p>
+        <p><img src="images/bolt-connections4.gif" alt=""></p>
+        <h3 id="color-coding">Color Coding</h3>
+        <p>Control connections are always white, whereas value connections are
+        color-coded based on their type. You can find the color of each type in
+        the Types article. Any type
+        that doesn&#39;t have a color pellet icon will have a <strong>green</strong> connection.</p>
+        <h3 id="values">Values</h3>
+        <p>When the Values toggle is enabled in the toolbar, Bolt will show the last value that traversed this connection during runtime.</p>
+        <p>If you enable Editor Preferences &gt; Bolt &gt; Predict Connection Values, it will also try to predict the values before you even enter play mode whenever possible.</p>
+        <p>For example:</p>
+        <h3 id="automatic-conversion">Automatic Conversion</h3>
+        <p>Bolt can automatically convert many types to keep your graphs tidy. This happens in the background, so you don&#39;t even have to think about it.</p>
+        <p>For example, here, you don&#39;t need to use Get Component between the Transform output and the Animator input, because Bolt will do it automatically.</p>
+        <p>The following conversions are supported:</p>
+        <ul>
+        <li>Number to Number (e.g. integer to float and vice versa)</li>
+        <li>Base Class to Child Class</li>
+        <li>Child Class to Base Class</li>
+        <li>Custom Operators (e.g. from Vector 2 to Vector 3)</li>
+        <li>Game Object to Child Component</li>
+        <li>Component to Parent Game Object</li>
+        <li>Component to Sibling Component</li>
+        <li>Enumerable to Array</li>
+        <li>Enumerable to List</li>
+        </ul>
+        <p>Bolt also supports boxing and unboxing. That means it will allow you to connect any object type port to any other value port. However, it is your responsibility to ensure that the types are compatible, otherwise you will get an error in play mode.</p>
+        <h3 id="multiple-connections">Multiple Connections</h3>
+        <p>A single port can be connected multiple times for convenience.</p>
+        <p>For example, you can connect a single value output port to multiple value input ports:</p>
+        <p>However, you cannot connect multiple value output ports to a single value input port, because then it wouldn&#39;t be clear which value should be used.</p>
+        <p>You can also connect multiple control output ports to a single control input port. For example, here, a jump force would be applied either when the player presses space or clicks on the object:</p>
+        <p>However, you cannot directly connect a single control output port to multiple control input ports, because then the order in which the exit units would be executed wouldn&#39;t be clear. However, you can use the special Sequence node under Control for this purpose:</p>
+        <p>If you want to chain more than two consecutive actions, just use a higher number in the field in the sequence node header.</p>
+        <h3 id="contextual-options">Contextual Options</h3>
+        <p>Instead of creating units first then connecting them after, you can start a connection, click on an empty space in the graph, and the fuzzy finder will display new unit options that are compatible with the selected source port. Then, when you choose the new unit, Bolt will automatically connect it to the matching port.</p>
+        <p>For example, here, we want to get a 3D vector for the destination of our nav mesh agent. The fuzzy finder only shows options that have a Vector 3 output, and automatically creates and connects the node for us:</p>
+        <p><img src="images/bolt-connections11.gif" alt=""></p>
+        <h3 id="relations">Relations</h3>
+        <p>If you enable the Relations toggle in the toolbar, the inner connections of each node will be displayed:</p>
+        <p><img src="images/bolt-connections12.gif" alt=""></p>
+        <p>Relations are useful to understand what are the dependencies between each port of a unit. For example, in the above Add unit, you can see that if you want to get the result of A + B, you need to provide a value for A and B. Likewise, you can see that before invoking the Log unit, you should provide a value for its Message input port.</p>
+        <p>Bolt uses this information in the background for Predictive Debugging. For example, if you tried to get the value of A + B without providing a value for A, the node would show up as orange to indicate that it will fail in play mode.</p>
+        <p>When that happens, you can use the warnings shown in the graph inspector to know exactly what is missing.</p>
+        <p>Relations can also help you figure out which ports are required and which ports are optional. For example, in the Get Child unit (under Codebase &gt; Unity Engine &gt; Transform), we can see that we don&#39;t actually need to connect the control ports if we just want to get the transform value output.</p>
+        <p>Note that you cannot edit relations. They are predefined for each type of unit.</p>
+      </div>
+    </div>
+
+    <!--FLOW GRAPHS PREDICTIVE AND LIVE DEBUGGING-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="predictive-and-live-debugging">Predictive and Live Debugging</h1>
+
+        <h3 id="preditive-debugging">Preditive Debugging</h3>
+        <p>Bolt will attempt to predict nodes that may cause an error before you even enter play mode.</p>
+        <p>When a node is not properly configured or may cause an error, it will be colored yellow.</p>
+        <p>When a node is certain to cause an error, it will be colored orange.</p>
+        <p>In both cases, you should examine the node and make the required changes until it turns back to its normal color.</p>
+        <p>Let&#39;s look at a simple example. Here, the Log node is colored orange because it&#39;s missing the Message that it should output to the console:</p>
+        <p>If you connect the result of A + B to Message, the Log node will go back to normal. However, the Add node will turn orange, because it&#39;s missing its first operand, A.</p>
+        <p>If we properly provide values for both operands, everything will go back to normal.</p>
+        <p>Note that we don&#39;t have to connect the B input port, because it has a default inline value.</p>
+        <h3 id="null-references">Null References</h3>
+        <p>Null reference exceptions are very common. They happen when a parameter expects a value, but you give it &quot;nothing&quot;, or in scripting lingo, &quot;null&quot;.</p>
+        <p>Bolt will attempt to predict those if the Predict Potential Null References option is checked in Preferences &gt; Bolt &gt; Flow Graphs.</p>
+        <p>For example, even though the Destroy unit here has an inline value, since it is set to &quot;None&quot; (null), it is colored orange:</p>
+        <p>However, there are some rarer nodes that allow for null parameters. Unfortunately, because there is no way to know that from codebase analysis, Bolt will color them orange as a false positive. If this is a recurring issue for you, you can turn off Predict Potential Null References.</p>
+        <h3 id="missing-components">Missing Components</h3>
+        <p>When you use nodes that require components and pass a game object or component that does not have the specified component, the node will be colored yellow as a warning. For example, here, even though we are providing default values for each value input of the Add Force unit, Bolt detects that the owner game object does not have a rigidbody and warns us:</p>
+        <p>Bolt will not color it orange because it is possible to add components to game objects at runtime, so the node is not guaranteed to cause a crash if you add the required component before calling it. If this use case happens often in your project, you can disable Predict Potential Missing Components debugging from Preferences &gt; Bolt &gt; Flow Graphs.</p>
+        <h3 id="live-debugging">Live Debugging</h3>
+        <p>When in play mode, the currently active nodes are highlighted in blue.</p>
+        <p>If an error occurs, the node that caused it will be highlighted in red.</p>
+        <p>Let&#39;s take a look at a faulty graph. Here, we&#39;re trying to log our third favorite fruit to the console when we press space. (Surely this is an example that could apply to a game... right?)</p>
+        <p>Can you guess what will go wrong? If we press play and click the object, here&#39;s what happens.</p>
+        <p>As you can see, all nodes are highlighted in blue as soon as we click because they were activated. However, there was an error in the console. Uh oh!</p>
+        <p>That&#39;s fine, but it doesn&#39;t tell us exactly where we went wrong. To make our life easier, Bolt highlighted the faulty node in red.</p>
+        <p>We made a common mistake: thinking array indices start at 1, whereas they actually start at 0. In scripting, indices are always zero-based. That means the first item is at index 0, the second at index 1, the third at index 2, etc. Therefore, if we want to get the third item, we need to write 2 in the field.</p>
+        <p>Then, the graph works as expected:</p>
+      </div>
+    </div>
+
+    <!--FLOW GRAPHS SUPER UNITS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="super-units">Super Units</h1>
+
+        <p><strong>Super Units</strong> are flow graphs that are
+        nested in a parent flow graph as a single unit. They are a powerful
+        feature that allows you to re-use and organize your flow graphs.</p>
+        <p>For this example, we&#39;ll create a <strong>Take Damage</strong> super unit. Its task will be to substract the input damage from the <strong>health</strong> object variable, then check if it is
+        below zero, in which case it should play a death animation. Then, it
+        should return control to the parent unit and output a boolean that
+        indicates whether the character was killed.</p>
+        <h3 id="creating-a-super-unit">Creating A Super Unit</h3>
+        <p>To create a blank super unit, right-click an empty space in your graph
+        and choose Nesting &gt; Super Unit. The super
+        unit inspector works exactly like that of a machine; you can switch the
+        source of the graph between embed and macro and convert if you need.</p>
+        <p>If you want to give a title and summary to your super unit, you can do
+        so from the graph inspector.</p>
+        <p>For now, click the Edit Graph button or double-click the node to open the nested graph. Now
+        that you&#39;re in the sub graph, the breadcrumbs at the top left of the
+        graph window allow you to navigate back up.</p>
+        <h3 id="input-output">Input Output</h3>
+        <p>By default, the embed graphs in super units are created with <strong>Input</strong> and <strong>Output</strong>
+        nodes.</p>
+        <p>These are special nodes allow you to pass flow and values to and from
+        the parent flow graph.  </p>
+        <ul>
+        <li>The <strong>Input</strong> node allows you to define
+        flow entry points and parameters of any type that should be passed to
+        your super unit from the parent graph.</li>
+        <li>The <strong>Output</strong> node allows you to define
+        flow exit points and results of any type that your super unit can
+        return to the parent graph.</li>
+        </ul>
+        <p>Let&#39;s start with the input. Click on the input node to open it in the
+        graph inspector. For our Take Damage unit, we will need two inputs:</p>
+        <ul>
+        <li>An entry control input, that indicates when the character should
+        take damage</li>
+        <li>An integer value input, that indicates how many health points the
+        character should lose</li>
+        </ul>
+        <p>We will give the damage input a default value of 5 and hide the label
+        for the entry point, because what it does can be deduced from context.
+        For the moment, we won&#39;t spend time customizing the label and summary of
+        each port, but keep in mind that you can use those to document your own
+        super units.</p>
+        <p><img src="images/bolt-super-units5.gif" alt=""></p>
+        <p>As we go, the input node will get updated. When you&#39;re done, it should
+        look like this.</p>
+        <p>Now, let&#39;s configure the output. Click on the output node to open it in
+        the graph inspector. For our unit, we will need two outputs:  </p>
+        <ul>
+        <li>An exit control control output, that indicates when we&#39;re done</li>
+        <li>A boolean value output, that indicates whether the character was
+        killed by the damage</li>
+        </ul>
+        <p>When you&#39;re done, the output node should look like this.</p>
+        <p>Here are some very important constraints to keep in mind while defining
+        inputs and outputs:</p>
+        <ul>
+        <li><strong>The key cannot be null or empty.</strong></li>
+        <li><strong>The key of each port must be unique across the entire graph.</strong> You
+        cannot have an input and an output with the same key, even if they
+        are of a different kind or type.</li>
+        <li><strong>If you change a key, all connections to that port will be
+        removed.</strong> Bolt uses keys to identify ports, so if you change them,
+        the connections become obsolete. If you want to change the name of a
+        port without losing all the connections, you can override it with
+        the Label property, which is purely
+        cosmetic and has no impact on functionality.</li>
+        <li><strong>Each value input and output must have a type.</strong></li>
+        </ul>
+        <p>Bolt will warn you from the inspector if you do not meet these criteria.</p>
+        <p>Now that we have our input and output nodes, we only have the hard part
+        left to do! We&#39;ll leave the implementation of this node as a homework
+        and won&#39;t go through it step by step, but here&#39;s what the final result
+        could look like.</p>
+        <p>Back in the parent graph, all of this complex logic turns into a simple,
+        single unit with 2 inputs and 2 outputs. Tadah!</p>
+        <h3 id="using-a-macro">Using a Macro</h3>
+        <p>If you have a flow macro that you want to use as a super unit, you can
+        either drag &amp; drop it into your graph, or create it from the Macros category in the fuzzy finder.</p>
+        <p><img src="images/bolt-super-units12.gif" alt=""></p>
+        <h3 id="sharing">Sharing</h3>
+        <p>If you want to share your super unit with others, simply convert it to a
+        macro and upload it. Since macros are just normal asset files, you can
+        share them with your team and your friends!  </p>
+        <p>You can also share the macro in the #library channel on the Bolt Discord server.  </p>
+        <p>Note: Stay tuned! We&#39;re currently working on better ways to share your graphs.</p>
+        <ul>
+        <li>Copy+Pasting to and from a JSON string</li>
+        <li>Sharing your graphs directly on Imgur and Github Gists</li>
+        <li>In the long term, creating a graph cloud ecosystem</li>
+        </ul>
+      </div>
+    </div>
+
+    <!--SUMMARY STATE GRAPHS-->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="state-graphs">State Graphs SUMMARY</h1>
+
+        <p>
+          <span class="soustitre">Flow States and Super States</span>
+        </p>
+        <p>The two types of states you can add to your graphs.</p>
+        <p>
+          <span class="soustitre">Transitions</span>
+        </p>
+        <p>Transitions connect states to determine when the active state should switch.</p>
+        <p>
+          <span class="soustitre">State Units</span>
+        </p>
+        <p>State units allow you to nest a state graph inside a flow graph.</p>
+      </div>
+    </div>
+
+    <!--STATE GRAPHS FLOW STATES AND SUPER STATES-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="flow-states-and-super-states">Flow States and Super States</h1>
+
+
+        <p>Before starting this section of the manual, we assume that you&#39;ve read
+        the <a>Introduction</a>, that you&#39;re familiar with the
+        <a>Basic Concepts</a> and that you&#39;ve created a State
+        Machine. You should also have a good grip on how to use <a></a>Flow
+        Graphs</a>, because they are found everywhere inside state
+        graphs.</p>
+        <p>At this point, you should have a state graph with a single start node.</p>
+        <h3 id="states">States</h3>
+        <p><strong>States</strong> are self-contained behaviours that
+        tell an object how it should behave when it&#39;s, well, in a particular
+        state. They are often used for artificial intelligence (AI) behaviour or
+        for object or scene structure.</p>
+        <p>For example, a state machine for an enemy NPC could have 4 states,
+        &quot;Patrolling&quot;, &quot;Chasing&quot;, &quot;Attacking&quot; and &quot;Fleeing&quot;, while a state
+        machine for a door could have 3 states, &quot;Locked&quot;, &quot;Unlocked&quot; and &quot;Open&quot;.</p>
+        <p>In Bolt, there are two kinds of states.</p>
+        <ul>
+        <li><strong>Flow States</strong>: States that contain a
+        nested flow graphs. This means you can use all the units and
+        connections from the previous section in each state. Most of the
+        states you will create will be flow states.</li>
+        <li><strong>Super States</strong>: States that contain
+        another nested state graph. They allow for the creation of
+        hierarchical finite state machines (HSFM), that is, state machines
+        within state machines. They are useful for advanced re-use and organization of your graphs.</li>
+        </ul>
+        <p>Both types of states are &quot;nesters&quot;, meaning that they work exactly like
+        machines: their sub-graph can either be embedded, or referenced from a
+        macro. Their inspector looks and behaves in the same way.</p>
+        <p>States are connected together with Transitions. We&#39;ll get to them in the
+        next article. For now, let&#39;s focus on the state itself.</p>
+        <h3 id="creating-states">Creating States</h3>
+        <p>To display the state creation menu, simply right-click anywhere in the
+        empty grid. For now, simply choose <strong>Create Flow State</strong>.</p>
+        <p><img src="images/bolt-states2.gif" alt=""></p>
+        <p>Just like units in flow graphs, the new state is dimmed because it is
+        never entered. You can disable Dim in the
+        toolbar if you don&#39;t want this behaviour.</p>
+        <h3 id="start-states">Start State(s)</h3>
+        <p>You can choose at which state the graph starts by choosing one or more
+        <strong>Start State(s)</strong>. To do so, just right click
+        your state and choose Toggle Start. Start
+        states are highlighted in <strong>green</strong>.</p>
+        <p><img src="images/bolt-states3.gif" alt=""></p>
+        <p>Unlike most finite state machine tools, Bolt allows for <strong>multiple start
+        states</strong>. This means you can have parallel FSM&#39;s running in the same
+        graph or even joining at some point. However, most often, you&#39;ll only
+        need a single start state.</p>
+        <h3 id="any-state">Any State</h3>
+        <p>You can use the Any State to trigger
+        transitions to other states, no matter which state is currently active.
+        However, this state cannot receive any transition or execute any action.</p>
+        <h3 id="reading-states">Reading States</h3>
+        <p>Let&#39;s take a look at the anatomy of a state.</p>
+        <p>The top part of a state is its header. It displays the title and summary of its
+        nested graph. These have no impact on functionality; they&#39;re simply a
+        way for you to identify and comment your states. You can tell that it is
+        a flow state by its little flow graph icon.  </p>
+        <p>You&#39;ll notice that unlike units, states aren&#39;t much by themselves. Their
+        inspector looks and works exactly like the one for machines. You can
+        choose the source for the state&#39;s nested graph and open it by clicking
+        the Edit Graph button. You can also
+        <strong>double-click</strong> on the state node to open its nested graph.</p>
+        <h3 id="flow-states">Flow States</h3>
+        <p>What you see as the body of a flow state is a list of all the events
+        used in its nested flow graph. By default, new flow states are created
+        with the On Enter State, Update and On Exit State events for convenience, but you can delete those if you don&#39;t need them and add any other event that you want.</p>
+        <p>Let&#39;s go ahead and double-click the state to open it.</p>
+        <p>In the breadcrumbs at the top left, you can see that we are now within the state graph on our game object, inside the Start state.</p>
+        <p>You can use this part of the toolbar to navigate back to parent graphs
+        at any time.  </p>
+        <p>At the top of the graph inspector, when you have no node selected, you
+        can edit the title and summary of that state.</p>
+        <p>You can ignore the input and output port definitions below. They are
+        only used for Super Units, not for Flow States.  </p>
+        <p>Last but not least, the graph is pre-populated with 3 events. On Enter State gets called when an incoming transition leads to the parent state, and On Exit State gets called before the state is exited by one of its outgoing transitions. Update gets called at every frame while the state is active. Every event you add to a flow graph will only be listening while the parent state is active.</p>
+        <p>The rest of this graph works exactly like normal flow graphs. There are
+        no restrictions on the units that can be used.</p>
+        <h3 id="super-states">Super States</h3>
+        <p>Super states are created and edited exactly like flow states. The major
+        difference, of course, is that their graph is not a flow graph, but
+        another state graph. When super states are entered, all the start states
+        of their nested graph get entered. When super states are exited, every
+        state and transition of the nested graph is made inactive.</p>
+      </div>
+    </div>
+
+    <!--STATE GRAPHS TRANSITIONS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="transitions">Transitions</h1>
+
+
+        <p><strong>Transitions</strong> are what connect states to determine when the active
+        state should switch.</p>
+        <h3 id="creating-a-transition">Creating a Transition</h3>
+        <p>To create a transition, right-click the source state and select Make Transition. Then, click on the destination
+        state.</p>
+        <p><img src="images/bolt-transitions1.gif" alt=""></p>
+        <p>You can also end the transition at an empty space in the graph to create
+        a new state automatically:</p>
+        <p><img src="images/bolt-transitions2.gif" alt=""></p>
+        <p>As a shortcut, you can <strong>hold Ctrl</strong> (Cmd on
+        Mac) on the source node and drag to create a transition.</p>
+        <p><img src="images/bolt-transitions3.gif" alt=""></p>
+        <h3 id="editing-a-transition">Editing a Transition</h3>
+        <p>Just like flow states, a transition is also... a nested flow graph!</p>
+        <p>As you can see in the graph inspector, there are a few problems with our
+        new transition. It is never traversed because we never provided an event
+        specifying <em>when</em> to branch. This is why the transition, along with the
+        destination state, are both dimmed out.</p>
+        <p>If you <strong>double-click</strong> its node or click the Edit Graph button, you will dig into the transition&#39;s graph. By
+        default, it is configured like this:</p>
+        <p>The Trigger State Transition unit is a special
+        unit that tells the parent state it should branch via the current
+        transition. You can use any unit in a state transition graph, like
+        events or branches.</p>
+        <p>For example, if we want to transition to the chase state only when an
+        object with the Player tag enters the trigger
+        on the enemy, we could have a transition graph that looks like this:</p>
+        <p>Finally, if we want to customize the label our transition will have in
+        the parent state graph, we can deselect all units and edit the graph&#39;s
+        title in the graph inspector:</p>
+        <p>When we go back to the parent state, our transition looks like so:</p>
+        <p>If you don&#39;t assign a custom title for your transition, the name and
+        description of the event will be used.</p>
+        <p>By default, transition labels are always visible. If you find this takes
+        up too much screen real-estate in your graph, you can change their display trigger under Preferences &gt; Bolt &gt; State Graphs &gt; Transitions Reveal.</p>
+        <p><img src="images/bolt-transitions9.gif" alt=""></p>
+        <h3 id="self-transitions">Self Transitions</h3>
+        <p>Sometimes, it might be useful for a state to transition to itself. To do
+        so, right-click the state and choose <strong>Make Self Transition</strong>.</p>
+        <p>For example, imagine you want an enemy to patrol by changing its
+        destination to a random position every 3 seconds.</p>
+        <p>Your patrol state&#39;s flow graph could be.</p>
+        <p>And your self-transition&#39;s flow graph could be.</p>
+        <p>In the parent state graph, it would look like.</p>
+        <h3 id="multiple-transitions">Multiple Transitions</h3>
+        <p>There is no limit to how many transitions can be added to a state.
+        However, there is no notion of priority between transitions. You have to
+        use conditions to make sure the right transition gets chosen.</p>
+      </div>
+    </div>
+
+    <!--STATE GRAPHS FLOW STATE UNITS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="state-units">State Units</h1>
+
+        <p><strong>State Units</strong> are very similar to <a>super units</a>, but for state graphs instead of flow graphs. They allow you to nest a whole state graph into a single unit in
+        a parent flow graph.</p>
+        <p>To create a blank state unit, choose Nesting &gt; State
+        Unit in the fuzzy finder. As usual, you can double-click the node
+        or use the Edit Graph button from its inspector to open the nested graph. To create a state unit from a macro, you can either drag &amp; drop the macro asset into your graph, or choose it
+        from the Macros category in the fuzzy finder.</p>
+        <p>A state unit has two control input ports to indicate when to start and
+        stop it, and two matching control output ports to specify what to do
+        after.</p>
+        <p>When a state unit is started, all the start states in its nested state
+        graph will be entered.</p>
+        <p>When it is stopped, every state and transition in its nested graph will
+        be marked as inactive.</p>
+      </div>
+    </div>
+
+    <!--SUMMARY SCRIPTING-->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="scripting">Scripting SUMMARY</h1>
+
+        <p>
+          <span class="soustitre">Custom Types</span>
+        </p>
+        <p>Tell Bolt to import your custom C# scripts as unit options.</p>
+        <p>
+          <span class="soustitre">Variables API</span>
+        </p>
+        <p>How to get and set the values of Bolt variables in C#.</p>
+        <p>
+          <span class="soustitre">Events API</span>
+        </p>
+        <p>How to trigger custom Bolt events in C#.</p>
+        <p>
+          <span class="soustitre">Refactoring</span>
+        </p>
+        <p>Refactor your codebase without breaking Bolt graphs.</p>
+      </div>
+    </div>
+
+    <!--SCRIPTING CUSTOM TYPES-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="custom-types">Custom Types</h1>
+
+
+        <p>Bolt supports every class and struct type. By default, however, only the
+        most common are included in the fuzzy finder, along with all types
+        derived from Unity objects like components, Mono behaviours and
+        scriptable objects.</p>
+        <p>If you need to use a non-Unity type in your graphs, you can add it from Tools &gt; Bolt &gt; <strong>Unit Options Wizard...</strong>.</p>
+        <p>For example, if you wanted to use low-level graphics API calls, you
+        could add the Unity Engine GL class, then hit Generate.</p>
+        <p>If you want to use a custom type from a custom assembly (like a
+        third-party plugin), you need to add it first in the Assembly Options right before.</p>
+      </div>
+    </div>
+
+    <!--SCRIPTING VARIABLES API-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="variables-api">Variables API</h1>
+
+        <p>Bolt provides an easy API to handle variables, allowing to get or set their value and check if they are defined. All these operations are available from the <strong>Variables</strong> class.</p>
+        <p>For example:</p>
+        <pre><code>Variables.Application.Set(&quot;score&quot;, 100);
+        </code></pre><hr>
+        <h2 id="usings">Usings</h2>
+        <p>Make sure you add the following usings to your C# script to access the API:</p>
+        <pre><code>using Ludiq;
+        using Bolt;
+        </code></pre><hr>
+        <h2 id="scopes">Scopes</h2>
+        <h3 id="graph">Graph</h3>
+        <p>To access variables on a graph, you first need to create a graph reference. This is basically a path to the nested graph from its root machine.</p>
+        <p>If you simply want to get the root graph on a machine, you can use:</p>
+        <pre><code>var graphReference = GraphReference.New(flowMachine, true);
+        </code></pre><p>To access nested graphs, you will need to pass their parent nodes as additional parameters, for example:</p>
+        <pre><code>var graphReference = GraphReference.New(flowMachine, new IGraphParentElement[] { superUnit }, true);
+        </code></pre><p>Finally, just pass your graph reference:</p>
+        <pre><code>Variables.Graph(graphReference)
+        </code></pre><h3 id="object">Object</h3>
+        <p>To access variables on an object:</p>
+        <pre><code>Variables.Object(gameObject)
+        </code></pre><h3 id="scene">Scene</h3>
+        <p>To access scene variables:</p>
+        <pre><code>Variables.Scene(scene)
+        </code></pre><p>Or:</p>
+        <pre><code>Variables.Scene(gameObjectInScene)
+        </code></pre><p>Or:</p>
+        <pre><code>Variables.ActiveScene
+        </code></pre><h3 id="application">Application</h3>
+        <p>To access application variables:</p>
+        <pre><code>Variables.Application
+        </code></pre><h3 id="saved">Saved</h3>
+        <p>To access saved variables:</p>
+        <pre><code>Variables.Saved
+        </code></pre><hr>
+        <h2 id="operations">Operations</h2>
+        <p>In these examples, the lowercase scope refers to one of the scopes above.</p>
+        <h3 id="get">Get</h3>
+        <p>To get the value of a variable, use the Get method with a name parameter:</p>
+        <pre><code>scope.Get(&quot;name&quot;);
+        </code></pre><p>Note that variables are not strongly typed, so you will need to cast them manually. For example:</p>
+        <pre><code>int health = (int)Variables.Object(player).Get(&quot;health&quot;)
+        </code></pre><h3 id="set">Set</h3>
+        <p>To set the value of a variable, use the Set method with name and value parameters:</p>
+        <pre><code>scope.Set(&quot;name&quot;, value);
+        </code></pre><p>For example:</p>
+        <pre><code>Variables.Object(player).Set(&quot;health&quot;, 100);
+        </code></pre><p>Because variables are not strongly typed, you can pass any value to the second parameter, even if the variable currently is of a different type.</p>
+        <p>Using the set method with a variable name that does not yet exist will define a new variable.</p>
+        <h3 id="is-defined">Is Defined</h3>
+        <p>To check if a variable is defined, use the IsDefined method with a name parameter:</p>
+        <pre><code>scope.IsDefined(&quot;name&quot;);
+        </code></pre><p>For example:</p>
+        <pre><code>if (Variables.Application.IsDefined(&quot;score&quot;))
+        {
+            // ...
+        }
+      </div>
+    </div>
+
+    <!--SCRIPTING EVENTS API-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="events-api">Events API</h1>
+
+        <p>Bolt provides a simple API to trigger custom events from script.</p>
+        <h3 id="usings">Usings</h3>
+        <p>Make sure you add the following usings to your C# script to access the API:</p>
+        <pre><code>using Ludiq;
+        using Bolt;
+        </code></pre><h3 id="triggering">Triggering</h3>
+        <p>A single method call is needed to trigger a custom event:</p>
+        <pre><code>CustomEvent.Trigger(targetGameObject, argument1, argument2, ...)
+        </code></pre><p>You can pass as many arguments as you need (or no event at all).</p>
+        <p>For example, this custom event unit:</p>
+        <p>Can be triggered with this line of code:</p>
+        <pre><code>CustomEvent.Trigger(enemy, &quot;Damage&quot;, 30);
+      </div>
+    </div>
+
+    <!--SCRIPTING REFRACTORING-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="refactoring">Refactoring</h1>
+
+        <p>Bolt can automatically call methods, fields and properties from any
+        custom script in your project. For example, you can create a node from a
+        custom Player class with a TakeDamage method:</p>
+        <pre><code>    using UnityEngine;
+
+            public class Player : MonoBehaviour
+            {
+                public void TakeDamage(int damage)
+                {
+                    // ...
+                }
+            }
+        </code></pre><p>In a flow graph, it would look like.</p>
+        <p>If you change your script and rename or remove the TakeDamage method or the Player class. For example:</p>
+        <pre><code>    using UnityEngine;
+
+            public class Player : MonoBehaviour
+            {
+                public void InflictDamage(int damage)
+                {
+                    // ...
+                }
+            }
+        </code></pre><p>The node will turn red in the graph window and Bolt will log a warning
+        to the console.  </p>
+        <pre><code>    Failed to define Bolt.InvokeMember:
+            System.MissingMemberException: No matching member found: &#39;Player.TakeDamage&#39;
+        </code></pre><h3 id="renaming-members">Renaming Members</h3>
+        <p>In order to fix it, you can reopen the script file and map the new name
+        to the previous name with the <code>[RenamedFrom]</code> attribute.</p>
+        <p>It takes a single string parameter: the previous name of the member.</p>
+        <pre><code>    using UnityEngine;
+            using Ludiq;
+
+            public class Player : MonoBehaviour
+            {
+                [RenamedFrom(&quot;TakeDamage&quot;)]
+                public void InflictDamage(int damage)
+                {
+                    // ...
+                }
+            }
+        </code></pre><p>It is recommended to leave the attribute in your source even after a
+        successful recompile. This is because Bolt cannot guarantee Unity will
+        reserialize all your graphs with the corrected name. Bolt&#39;s
+        <code>[RenamedFrom]</code> attribute works much like Unity&#39;s own
+        <a><code>[FormerlySerializedAs]</code></a>
+        attribute in that regard.</p>
+        <h3 id="renaming-types">Renaming Types</h3>
+        <p>You can also rename types (including classes, structs and enums) using
+        the <code>[RenamedFrom]</code> attribute.</p>
+        <p>For example, if you renamed your <code>Player</code> class to <code>Character</code>:</p>
+        <pre><code>    using UnityEngine;
+            using Ludiq;
+
+            [RenamedFrom(&quot;Player&quot;)]
+            public class Character : MonoBehaviour
+            {
+                [RenamedFrom(&quot;TakeDamage&quot;)]
+                public void InflictDamage(int damage)
+                {
+                    // ...
+                }
+            }
+        </code></pre><p>Note: The old name <strong>must include the namespace</strong>. In the previous example, it
+        isn&#39;t required because we are in the global namespace.</p>
+      </div>
+    </div>
+
+    <!--SUMMARY ADVANCED TOPICS-->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="advanced-topics">Advanced Topics SUMMARY</h1>
+
+        <p>
+          <span class="soustitre">Live Editing</span>
+        </p>
+        <p>Edit your graphs while in Play mode.</p>
+        <p>
+          <span class="soustitre">Building for Mobile / Consoles</span>
+        </p>
+        <p>Support ahead-of-time platforms like consoles and mobile.</p>
+        <p>
+          <span class="soustitre">Prefabs</span>
+        </p>
+        <p>Bolt supports prefabs with some minor caveats.</p>
+        <p>
+          <span class="soustitre">Version Control</span>
+        </p>
+        <p>Ignore templates for Git and Unity Collab</p>
+      </div>
+    </div>
+
+    <!--ADVANCED TOPICS LIVE EDITING-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="live-editing">Live Editing</h1>
+
+        <p>Bolt supports full live editing, meaning you can create and edit graphs
+        while in play mode.</p>
+        <p>You&#39;re not limited to tweaking values — you can also add and remove
+        nodes, connections, etc.</p>
+        <p>In accordance with the Unity convention:</p>
+        <ul>
+        <li>Changes made to embeds will be <strong>reverted</strong> when you exit play mode, because they live inside components.</li>
+        <li>Changes made to macros will be <strong>saved</strong> when you exit play mode, because they live inside assets</li>
+        </ul>
+        <p>If you want to preserve the changes made to a component graph, make sure
+        to copy the modified nodes before exiting play mode. You&#39;ll then be able
+        to paste them while in edit mode.</p>
+        <p>When in live mode, Bolt will display the flow as droplets on
+        connections.</p>
+        <p>You can disable these animations on either the value connections, the
+        control connections or both from the editor preferences window.</p>
+        <h3 id="persistence">Persistence</h3>
+        <p>Unlike traditional Unity components, Bolt macros save the changes you
+        make during play mode.</p>
+        <p><img src="images/bolt-live3.gif" alt=""></p>
+        <h3 id="propagation">Propagation</h3>
+        <p>Changes made to macros will instantly be shared across all instances of
+        that macro!</p>
+        <p><img src="images/bolt-live4.gif" alt=""></p>
+      </div>
+    </div>
+
+    <!--ADVANCED TOPICS BUILDING FOR MOBILE CONSOLES-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="building-for-mobile--consoles">Building for Mobile / Consoles</h1>
+
+        <h3 id="aot-pre-build">AOT Pre-Build</h3>
+        <p>Bolt supports all Unity build targets, including <strong>ahead-of-time (AOT)</strong>
+        platforms like iOS, Android, WebGL, WSA and consoles.</p>
+        <p>However, before building to AOT platforms, you need to run an additional
+        step in order to trick the Unity compiler into forcing the compilation
+        of reflected members and types ahead of time.</p>
+        <p>Fortunately, this is a one click operation. Simply open Tools &gt; Ludiq &gt; AOT Pre-Build and click <strong>Pre-Build</strong>:</p>
+        <p>If you forget to run this step, you may get errors that look like:</p>
+        <pre><code>ExecutionEngineException: Attempting to call method (...) for which no ahead of time (AOT) code was generated.
+        </code></pre><h3 id="aot-safe-mode">AOT Safe-Mode</h3>
+        <p>Because AOT platforms do not safely support generics, generic types are
+        by default not available in literals when you are targetting an AOT
+        platform. To disable this behaviour, you can uncheck <strong>AOT Safe Mode</strong> in the Tools &gt;
+        Ludiq &gt; Project Settings....</p>
+        <h3 id="universal-windows-platform">Universal Windows Platform</h3>
+        <p>When building for Universal Windows Platform (UWP, formerly known as
+        Windows Store Apps, WSA, or Metro), Bolt requires the use of the
+        <strong>IL2CPP</strong> scripting backend. To change it, go to Edit &gt; Project Settings &gt; Player, choose the Window Store panel and change the value of the following dropdown:</p>
+        <h3 id="cloud-build">Cloud Build</h3>
+        <p>The method <em>Ludiq.AotPreBuilder.PreCloudBuild</em> can be used to automatically hook into the cloud build process as a pre-export method name. See the <a>Unity
+        Documentation</a>
+        for more details.</p>
+      </div>
+    </div>
+
+    <!--ADVANCED TOPICS PREFABS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="prefabs">Prefabs</h1>
+
+        <h3 id="prefab-support">Prefab Support</h3>
+        <table>
+        <thead>
+        <tr>
+        <th>Prefab Instance</th>
+        <th>Macro</th>
+        <th>Embed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Created in editor</td>
+        </tr>
+        <tr>
+        <td>Instantiated at runtime</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>As this table indicates, there is full prefab support for every type of
+        graph <strong>except</strong> for <strong>embed</strong> graph prefab instances created <strong>in the
+        editor</strong>.</p>
+        <p>If you use a machine with an embed graph as a prefab, the edits you make
+        on the prefab definition <strong>will not be automatically propagated</strong> to the
+        prefab instances. Bolt will display warning messages in the inspector
+        and in the graph window when you try to do this:</p>
+        <p>To avoid this, just remember this the rule of thumb:</p>
+        <p>Note: When adding a machine to a prefab, use a macro instead of an embed.</p>
+        <h3 id="prefab-overrides">Prefab Overrides</h3>
+        <p>Bolt uses a custom serialization engine,
+        <a>FullSerializer</a>,
+        instead of Unity&#39;s default serialization. This is necessary because
+        Unity&#39;s serialization is extremely limited in terms of nesting,
+        extensibility and coverage. For this reason, prefabs are handled a
+        little differently.</p>
+        <p>One minor consequence of this you might notice in prefabs is that when
+        bolding inspector labels and values, it indicates differentiation rather
+        than override. For example, an inspector field on a prefab instance will
+        be never be bolded if it has the same value as the prefab definition,
+        even if it has overridden this value.</p>
+      </div>
+    </div>
+
+    <!--ADVANCED TOPICS VERSION CONTROL-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="version-control">Version Control</h1>
+
+        <p>Bolt plugin files should be excluded from version control. This
+        minimizes the size of your commits and keeps things cleaner.</p>
+        <p>Note: If you&#39;re using a <strong>public repository</strong> for your project, you must
+        exclude Bolt files with the instructions below. If you don&#39;t, you are
+        effectively illegally redistributing Bolt online and breaking the Unity
+        Asset Store EULA and ToS.</p>
+        <h3 id="excluding-files">Excluding Files</h3>
+        <p>To exclude files from your version control solution, the standard
+        approach is to include a file that specifies which files and folder to
+        exclude.</p>
+        <p>You should place this file at the <strong>root</strong> of the project folder,
+        <strong>above</strong> the Assets folder.</p>
+        <ul>
+        <li>If you are using <strong>Git</strong>, name this file .gitignore</li>
+        <li>If you are using <strong>Unity Collab</strong>, name this file .collabignore</li>
+        <li>If you are using <strong>Subversion</strong>, you will need to <a>ignore the files
+        manually</a></li>
+        </ul>
+        <p>Note: On Windows, creating files without a filename is forbidden in explorer.
+        Follow <a>these
+        instructions</a>
+        to create the file.</p>
+        <h3 id="ignore-file-template">Ignore File Template</h3>
+        <p>This template will ignore all core Bolt files while preserving your
+        project settings and variables. It also includes the <a>standard Unity
+        ignore
+        directives</a>
+        for files that shouldn&#39;t be versioned.  </p>
+        <p>The transient section can be commented on or off depending on your
+        needs. If you&#39;re unsure, you can leave it enabled.</p>
+        <pre><code>    ## Bolt
+
+            # Always exclude these files, because they are part of the plugin
+
+            Assets/Ludiq/Assemblies
+            Assets/Ludiq/Assemblies.meta
+            Assets/Ludiq/Ludiq
+            Assets/Ludiq/Ludiq.meta
+            Assets/Ludiq/*/LICENSES.txt
+            Assets/Ludiq/*/LICENSES.txt.meta
+            Assets/Ludiq/*/Documentation
+            Assets/Ludiq/*/Documentation.meta
+            Assets/Ludiq/*/IconMap
+            Assets/Ludiq/*/IconMap.meta
+            Assets/Ludiq/Ludiq.Core/DotNetDocumentation
+            Assets/Ludiq/Ludiq.Core/DotNetDocumentation.meta
+            Assets/Ludiq/*/*.root
+            Assets/Ludiq/*/*.root.meta
+
+            # Optionally exclude these transient (generated) files, 
+            # because they can be easily re-generated by the plugin
+
+            Assets/Ludiq/Bolt.Flow/Generated/UnitOptions.db
+            Assets/Ludiq/Bolt.Flow/Generated/UnitOptions.db.meta
+            Assets/Ludiq/Ludiq.Core/Generated/Property Providers
+            Assets/Ludiq/Ludiq.Core/Generated/Property Providers.meta
+
+            ## Unity
+            # From: https://github.com/github/gitignore/blob/master/Unity.gitignore
+
+            [Ll]ibrary/
+            [Tt]emp/
+            [Oo]bj/
+            [Bb]uild/
+            [Bb]uilds/
+            Assets/AssetStoreTools*
+
+            # Visual Studio cache directory
+            .vs/
+
+            # Autogenerated VS/MD/Consulo solution and project files
+            ExportedObj/
+            .consulo/
+            *.csproj
+            *.unityproj
+            *.sln
+            *.suo
+            *.tmp
+            *.user
+            *.userprefs
+            *.pidb
+            *.booproj
+            *.svd
+            *.pdb
+            *.opendb
+
+            # Unity3D generated meta files
+            *.pidb.meta
+            *.pdb.meta
+
+            # Unity3D Generated File On Crash Reports
+            sysinfo.txt
+
+            # Builds
+            *.apk
+            *.unitypackage
+        </code></pre><h3 id="removing-ignored-files">Removing Ignored Files</h3>
+        <p>If you previously committed files that should be exluded, you can use
+        the following Git commands to create a commit that removes them:</p>
+        <pre><code>    git rm -r --cached . 
+            git add .
+            git commit -am &quot;Remove ignored files&quot;
+        </code></pre><p>Note: If you had pushed these files to a public repository, this will not
+        erase them from the commit history. Therefore, you would still be
+        illegally redistributing the Bolt files. Either make your repository
+        private or start a new repository with a fresh tree that never included
+        the Bolt files.</p>
+      </div>
+    </div>
+
+    <!--SUMMARY UNIT REFERENCE-->
+    <div class="BOX">
+      <div class="PARAGRAPHESUMMARY">
+        <h1 id="unit-reference">Unit Reference SUMMARY</h1>
+
+        <p>
+          <span class="soustitre">Self</span>
+        </p>
+        <p>The Self unit returns the current game object.</p>
+        <p>
+          <span class="soustitre">Control</span>
+        </p>
+        <p>Control units allow you to branch, loop and merge the flow.</p>
+        <p>
+          <span class="soustitre">Time</span>
+        </p>
+        <p>Timer, cooldown and wait units.</p>
+        <p>
+          <span class="soustitre">Events</span>
+        </p>
+        <p>Events listen to a trigger in order to start the flow.</p>
+        <p>
+          <span class="soustitre">Variables</span>
+        </p>
+        <p>These units allow you to get, set, and check variables.</p>
+        <p>
+          <span class="soustitre">Nulls</span>
+        </p>
+        <p>Units that neal with the null, a.k.a. &quot;nothing&quot; value.</p>
+        <p>
+          <span class="soustitre">Formula</span>
+        </p>
+        <p>Formulas evaluate logic and match with multiple arguments.</p>
+      </div>
+    </div>
+
+    <!--UNIT REFERENCE SELF-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="self">Self</h1>
+
+        <p>The <strong>Self</strong> unit returns the game object that owns the machine in which the graph runs.</p>
+        <p>Most of the time, units will default their target to self so you don&#39;t
+        have to explicitly use this node. This means that, for example, these
+        two graphs are equivalent.</p>
+        <p>However, not all units support the self inline value. Those that do not
+        will display None instead of Self in their default value field, for example the
+        Destroy unit. In these cases, you must manually specify the connection if you mean to use Self.</p>
+        <p>You can use the self unit even in macros even if they are not &quot;yet&quot;
+        owned by a game object. The self node will represent the owner of the
+        graph at runtime, when it&#39;s used in a machine.</p>
+      </div>
+    </div>
+
+    <!--UNIT REFERENCE CONTROL-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="control">Control</h1>
+
+        <h2 id="branching">Branching</h2>
+        <p><strong>Branching</strong> units split the control flow based on a value.</p>
+        <h3 id="branch">Branch</h3>
+        <p>The common branch unit uses a boolean condition. You can think of them
+        as an if the condition is true, do something, else, do something else.</p>
+        <h3 id="switch">Switch</h3>
+        <p>You can also branch depending on the value of an enum, a string or an
+        integer. These units are called Switch units, like they are in scripting.</p>
+        <p>To switch on an enum, you first need to decide the type of the enum.
+        This will make the branch output ports appear:</p>
+        <p><img src="images/bolt-control2.gif" alt=""></p>
+        <p>To switch on a string or number, you first need to create each branch
+        option in the graph inspector.</p>
+        <p>The unit will then be updated with each output port.</p>
+        <p>For strings, you can optionally choose to ignore the case of the
+        selector.</p>
+        <p>Note that a Default port is always added. It
+        is the path that the control flow should take if the input selector does
+        not correspond to any other option.</p>
+        <h2 id="merging">Merging</h2>
+        <h3 id="select">Select</h3>
+        <p><strong>Select</strong> units are the opposite of switch
+        units. They allow you to select a single value from a set of options
+        based on a selector.</p>
+        <p>Because they&#39;re so similar, we&#39;re not going to cover each of them, but
+        here&#39;s an example of a Select On Integer unit that chooses a color based on a player number.</p>
+        <p>Note that predictive debugging here warns you that there will be a crash
+        if playerNo is not within 1, 2, 3, or 4, because we haven&#39;t connected the Default port.
+        If we&#39;re sure that it never will be for example 5 or 6, we can safely
+        ignore this warning.</p>
+        <h2 id="looping">Looping</h2>
+        <p>Loops allow you to repeat logic for a certain number of iterations
+        before moving on.</p>
+        <p>The logic to be repeated is called the body of the loop. After the loop is over, the exit port is called.</p>
+        <p>Note that the body of every loop is called synchronously, <em>not</em> over the
+        course of multiple frames. Coroutine-like behaviours are instead
+        achieved by listening to the update event manually.</p>
+        <h3 id="while-loop">While Loop</h3>
+        <p>While is the simplest form of loop. It will
+        repeat its body while its condition remains
+        true, or in other words, until it becomes false.</p>
+        <p>For example, this graph generates a new random name until the result
+        isn&#39;t contained in the names application variable.</p>
+        <p><strong>Be careful not to create an infinite loop!</strong> If the condition is
+        always true, the editor will hang. Because loop bodies are synchronous,
+        not parallel, there are few uses for while loops in Bolt.</p>
+        <h3 id="for-each-loop">For Each Loop</h3>
+        <p>For Each iterates over every element of a
+        collection. It outputs the current index and item that is being looped
+        over.</p>
+        <p>For example, this graph will output 3 messages to the console:</p>
+        <ul>
+        <li><em>I like cats</em></li>
+        <li><em>I like dogs</em></li>
+        <li><em>I like birds</em></li>
+        </ul>
+        <p>To access the key and value from dictionaries in the loop, check the Dictionary box:</p>
+        <p><img src="images/bolt-controls8.gif" alt=""></p>
+        <h3 id="for-loop">For Loop</h3>
+        <p>For is a numeric loop. It requires 3 integers: a start index, an end
+        index, and a step. The loop will start at the first index, then move towards the last index via increments of the step. It outputs the current index.</p>
+        <p>For example, this graph will count to ten by skipping odd numbers
+        because of its step. In other words, its output will be 0, 2, 4, 6, then
+        8.</p>
+        <p>The for loop can also be very useful when combined to the Get List Item and Count
+        Items units.</p>
+        <p>For example, this graph is very similar to the last, in that it will
+        output I like {animal}s to the console.
+        However, instead of using the for each unit
+        that outputs each item, we get each item manually by its index in the
+        list. This allows us to specify a different increment (in this case 2)
+        and skip some items. Therefore, this graph will only output 2 messages:</p>
+        <ul>
+        <li><em>I like cats</em></li>
+        <li><em>I like birds</em></li>
+        </ul>
+        <h3 id="break-loop">Break Loop</h3>
+        <p>You can tell a loop to finish early by using the Break Loop unit. As soon as this unit is entered, the exit port of the loop will be called, no matter how many more
+        iterations remained.</p>
+        <p>For example, even though this for loop is supposed to count to 10, it
+        will stop at 5 because of the break. Therefore, its output will be 0, 1,
+        2, 3, then 4.</p>
+        <h2 id="exception-handling">Exception Handling</h2>
+        <h3 id="try-catch">Try Catch</h3>
+        <p>The Try Catch unit allows you to handle an <a>Exception</a>
+        that occurs. It&#39;s a good way of preventing your game from crashing in
+        case you know some code might fail.</p>
+        <p>Anything that gets executed in the Try branch
+        is considered &quot;safe&quot;: if it fails, the flow will continue from the Catch branch instead. If that happens, the Exception port will contain information about the
+        failure. A common way of handling it is to log a warning with the
+        exception message.</p>
+        <p>Note: By default, this unit catches any exception. You can be more specific in
+        your handling by changing the exception type in the dropdown.</p>
+        <p>The Finally branch is optional. It will always be called after Try or Catch, <em>regardless</em> of whether the operation succeeded or not. It is usually used to dispose or destroy any resources
+        that you need to ensure are freed. You can leave that port disconnected
+        if you don&#39;t need that.</p>
+        <h3 id="throw">Throw</h3>
+        <p>The Throw unit allows you to raise your own exceptions that stop the flow. These can then be caught with Try Catch.</p>
+        <p>It is good practice to &quot;fail early&quot; by throwing as soon as something
+        unexpected happens. It helps catch bugs early in the chain, instead of
+        letting them trickle down and have unexpected side effects that are hard
+        to debug.</p>
+        <p>For example, you could make sure a damage is positive before applying it.</p>
+        <p>If you check the Custom checkbox, you&#39;ll be
+        able to pass a custom Exception object that can contain more data than a
+        simple message. Most often, this is not required. By default, the thrown
+        exception is of type <code>System.Exception</code>.</p>
+        <h2 id="toggles">Toggles</h2>
+        <p>Toggle units are like light-switches: they can be turned on and off to impact either flow or values. You can also think of then as &quot;gates&quot; that can be opened and closed.</p>
+        <h3 id="toggle-flow">Toggle Flow</h3>
+        <p>The Toggle Flow unit gates the flow of control. When on, the flow will pass through; when off, it will not.</p>
+        <p>In this simple example, the object would start going up when you hit
+        Space, and it would stop if you hit it again.</p>
+        <p>As you can see, there are many inputs and outputs that allow fine grain
+        control over the logic. In the previous example, we were using Toggle because we wanted the same event (a keypress) to turn the toggle on and off. If we wanted that to be done through two
+        different events, we could have used On and Off instead.</p>
+        <p>On the output side, the Is On boolean port
+        indicates whether the toggle is currently turned on. The control outputs
+        are triggered according to the table below:  </p>
+        <table>
+        <thead>
+        <tr>
+        <th>Port</th>
+        <th>Triggered When</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>On</td>
+        <td>Flow enters the toggle via the unmarked input while it is on.</td>
+        </tr>
+        <tr>
+        <td>Off</td>
+        <td>Flow enters the toggle via the unmarked input while it is off.</td>
+        </tr>
+        <tr>
+        <td>Turned On</td>
+        <td>The toggle gets turned on, either via the On or Toggle inputs.</td>
+        </tr>
+        <tr>
+        <td>Turned Off</td>
+        <td>The toggle gets turned off, either via the Off or Toggle inputs.</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="toggle-value">Toggle Value</h3>
+        <p>The Toggle Value unit selects between two
+        different input values depending on whether it is on or off. Its ports
+        work exactly like the Toggle Flow unit.</p>
+        <p>Here&#39;s another way of implementing the same logic as the previous
+        example: hitting Space will toggle the object going up. This time, we&#39;re
+        doing this with a value of 1 or 0 as the vertical velocity instead.</p>
+        <p>Note: Turning on relations in the toolbar is a good reminder of the flow
+        between the toggle ports.</p>
+        <h2 id="once">Once</h2>
+        <p>The Once unit allows you to execute different
+        logic the first time it is traversed from the subsequent times.</p>
+        <p>It can be reset by entering the Reset port.</p>
+        <h2 id="cache">Cache</h2>
+        <p>The Cache unit allows you to save the result
+        of an expensive operating and reuse it instead of fetching it again each
+        time you need it.</p>
+        <p>For example, pretend we had an expensive formula to calculate, and we
+        wanted to log the result twice. Using this graph, the formula will be
+        calculated twice.</p>
+        <p>But by using the Cache unit, we can save the result and calculate it
+        only once, optimizing our performance twofold.</p>
+        <p>Note: It&#39;s important to note that caching only lasts <em>within the scope of the
+        current flow</em>. The value of the cache is not shared or available from
+        another event, for example.</p>
+      </div>
+    </div>
+
+    <!--UNIT REFERENCE TIME-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="time">Time</h1>
+
+        <h3 id="wait">Wait</h3>
+        <p>Wait units allow you to delay the execution of the rest of your flow.
+        The delay can be either a set amount of seconds, or a condition that has
+        to be fulfilled before moving on.</p>
+        <p>Asynchronicity (delayed execution) in Unity is handled by
+        <strong><a>coroutines</a></strong> (not
+        multithreading). This means we need to tell Bolt to run our flow as a
+        coroutine in order to support wait units. Thankfully, all you have to do
+        is enable the Coroutine checkbox on the initial event that starts the flow. You can do find it in the graph
+        inspector:</p>
+        <p>When you do, a small dual-arrow icon will appear on the event,
+        indicating that it runs as a coroutine.</p>
+        <p>If you forget to enable the coroutine checkbox, you&#39;ll get an error at
+        runtime saying a port &#39;can only be triggered in a coroutine&#39; when
+        reaching a wait unit.</p>
+        <p>All wait units can be also used inside loops and sequences.</p>
+        <h3 id="wait-for-seconds">Wait For Seconds</h3>
+        <p>The Wait For Seconds unit is the simplest and most common wait unit. It delays the execution by a certain number of
+        seconds:</p>
+        <h3 id="wait-until">Wait Until</h3>
+        <p>The Wait Until unit stops execution until a given condition is met. For example, you could wait until an object is
+        close enough.</p>
+        <h3 id="wait-while">Wait While</h3>
+        <p>The Wait While unit is the opposite of the Wait Until unit: it stops execution as long as a given condition is met. For example, you could wait while an object is too far.</p>
+        <h3 id="wait-for-frame">Wait For Frame</h3>
+        <p>As the name implies, Wait For End Of Frame and Wait For Next Frame units allow you to delay
+        execution until a specific point in Unity&#39;s update loop is met. For more
+        information, see: <a>Execution Order of
+        Events</a>.</p>
+        <h3 id="wait-for-flow">Wait For Flow</h3>
+        <p>The Wait For Flow unit allows you to delay execution until all input flows have been entered at least once. It&#39;s a useful way of grouping conditions that occur over multiple events or
+        frames. In other languages, this concept is sometimes called &quot;promises&quot;.</p>
+        <h3 id="cooldown">Cooldown</h3>
+        <p>The Cooldown unit allows you to easily implement a time restriction when the input flow can only be triggered
+        so often.</p>
+        <p>When the cooldown is available, the input flow gets transferred to the Ready port. When it is not, it gets transferred to the Not Ready port.</p>
+        <p>The Duration port determines how long it takes for the cooldown to become available again. Checking Unscaled will make it ignore the <a>time scale</a>.</p>
+        <p>The Tick port gets called at every frame while
+        a cooldown is active. It is a good place to update any GUI code that
+        show an indicator of the remaining duration until the action can be
+        called again. In order to get that value, you have two options: Remaining, which returns the number of seconds until
+        ready, and Remaining %, which returns a value
+        between 0 and 1, respectively from ready to not ready.</p>
+        <p>As soon as the cooldown becomes ready, the Completed port will get triggered once. You do not
+        need to constantly pass input flow for this port to get triggered.</p>
+        <p>Finally, you can force the cooldown to become ready and reset its
+        internal timer by triggering the Reset port.</p>
+        <p>Here&#39;s an example of how to implement a simple cooldown firing mechanic
+        with a masked sprite and text that indicate how much time is remaining
+        until we can fire again:</p>
+        <h3 id="timer">Timer</h3>
+        <p>The Timer unit allows you to easily implement
+        and monitor a time pausable progression.  </p>
+        <p>The Duration port determines how long it takes
+        for the cooldown to become available again. Checking Unscaled will make it ignore the <a>time
+        scale</a>.  </p>
+        <p>A timer is started by triggering the Start input, which will in turn trigger the Started output.</p>
+        <p>It can be paused and resumed with the Pause and Resume inputs, or it can alternate between
+        these states with the Toggle input.</p>
+        <p>The Tick port gets called at every frame while
+        a timer is active. In order to get the time measurements, you have two
+        options: Elapsed, which returns the time since
+        the timer was started, or Remaining, which
+        returns the time until the timer completes.</p>
+        <p>You can get each of these measurements in absolute number of seconds, or
+        in %, which returns a value between 0 and 1,
+        useful for lerping.</p>
+        <p>As soon as the timer finishes, the Completed port will get triggered once.</p>
+        <p>Here&#39;s an example of how to implement a simple autodestroy mechanic on a
+        sprite that will progressively color it red before destroying.</p>
+      </div>
+    </div>
+
+    <!--UNIT REFERENCE EVENTS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="events">Events</h1>
+
+        <p><strong>Events</strong> are triggers that you can <em>listen</em>
+        to in order to do something when they happen. They are the starting
+        point for all the Flow and show up as special
+        <strong>green</strong> nodes in graphs.</p>
+        <p>There are many kinds of events to choose from, grouped in sub-categories
+        under the root Events category.</p>
+        <p>Two simple common events are Start and Update, both located under Lifecycle.  </p>
+        <ul>
+        <li><strong>Start</strong> gets called once when the graph
+        or event handler is first created.</li>
+        <li><strong>Update</strong> gets called at every frame
+        while the graph or event handler is active.</li>
+        </ul>
+        <p>New flow machines start with both these events by default.</p>
+        <h3 id="inputs-amp-outputs">Inputs &amp; Outputs</h3>
+        <p>All events have a single Trigger control
+        output that starts the flow when they are triggered.</p>
+        <p>When events have value inputs, these are options that influence <em>when</em>
+        the event will get triggered. For example, some events have a Target setting that determines which object is listening to the event. Most often, you&#39;ll leave this setting at its
+        default value of Self.</p>
+        <p>The value outputs on events are arguments that are passed <em>from</em> the
+        event, giving you more information about what actually happened. For
+        example, on the On Trigger Enter event, the
+        other collider that was involved in the collision is an output.</p>
+        <h3 id="custom-events">Custom Events</h3>
+        <p>There is a special type of event, the <strong>Custom Event</strong>, that you can use to trigger your very own events across graphs, along with their custom arguments.</p>
+        <p>Let&#39;s say we wanted create a custom event called On Damage that should get called to make the character lose health.
+        This event should have one integer argument that indicates the amount of
+        damage to inflict.</p>
+        <p>First, we can listen to the event by creating a Custom Event unit (under Events). We will set its name to On Damage. The field below the name is the argument count, which we will set to 1.</p>
+        <p><img src="images/bolt-events4.gif" alt=""></p>
+        <p>Note that as always, indices are zero-based, so the first argument is
+        labeled Arg. 0.  </p>
+        <p>To trigger the event from elsewhere, we must use the Trigger Custom Event unit, located right under the Custom Event unit in the fuzzy finder. We will
+        configure it the same way, like a mirror. Make sure to type the name of
+        the event in the exact same way, because it is sensitive to case and
+        whitespace.  </p>
+        <p>For example, if you were creating a flow machine on a boulder that could
+        hit the player, you might want to use the force of the impact as the
+        damage.</p>
+        <p>Notice we are using the collider that hit with the boulder as the target
+        of our trigger. This means the On Damage event
+        will be triggered on all machines attached to that collider.  </p>
+        <p>Finally, you could use the damage value to subtract health from the
+        receiver object.</p>
+        <p>Custom events do not require a receiver and will not cause an error if
+        there is no listener to handle them.</p>
+        <h3 id="animation-events">Animation Events</h3>
+        <p>You can use animation events to trigger Bolt graphs when you reach a
+        certain point in your animation.</p>
+        <p>First, select an object with a machine and an animator. Then, from the
+        animation window, add an animation event:</p>
+        <p><img src="images/bolt-events7.gif" alt=""></p>
+        <p>With the event selected, choose TriggerAnimationEvent as the function from the
+        inspector.</p>
+        <p>You can use any parameter you wish from the inspector.</p>
+        <p>Then, in your flow graph, add an <strong>Animation
+        Event</strong> unit (under Events &gt;
+        Animation).  </p>
+        <p>There are two types: a <strong>global</strong> animation event, and a <strong>named</strong>
+        animation event.</p>
+        <p>The difference between them is that the first one will listen to all
+        animation events on the object and return the string parameter.</p>
+        <p>The second one will only trigger is the string parameter is equal to the
+        specified name input.</p>
+        <h3 id="unity-events">Unity Events</h3>
+        <p>You can use Unity Events to trigger events that have been setup from the
+        inspector.</p>
+        <p>These are commonly found in GUI components like buttons, but <a>they can
+        also be created in your custom
+        scripts</a>.</p>
+        <p>You can configure them by selecting an object with a machine and
+        choosing the Trigger Unity Event method. In
+        the string field, type the event name you wish to listen to in your
+        graph.</p>
+        <p>Finally, in your graph, just add a UnityEvent unit with a matching name.</p>
+        <p>Additional arguments are not supported on Unity events.</p>
+      </div>
+    </div>
+
+    <!--UNIT REFERENCE VARIABLES-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="variables">Variables</h1>
+
+        <p>There are 5 kinds of variable units, one for each kind of <a href="bolt-variables.html">Variable</a>.</p>
+        <p>For each of these, there are 3 units:</p>
+        <ul>
+        <li>Get, to retrieve the value of the variable</li>
+        <li>Set, to assign a new value to the variable</li>
+        <li>Is Defined, to check whether the variable is defined</li>
+        </ul>
+        <p>They are all found under the Variables category in the fuzzy finder :</p>
+        <p><img src="images/bolt-variables-ref1.gif" alt=""></p>
+        <p>You can easily spot variable units in the graph because of their teal coloring.</p>
+        <h3 id="dynamic-typing">Dynamic Typing</h3>
+        <p>One important thing to remember for the get / set units is that variables are not statically typed, meaning their type can change at runtime. This is why their type displays as object even if you defined them from the variables window.</p>
+        <h3 id="get-variable">Get Variable</h3>
+        <p>The get variable unit requires the <strong>Name</strong> of the variable as an input and returns the <strong>Value</strong> as an output.</p>
+        <h3 id="set-variable">Set Variable</h3>
+        <p>The set variable units require the <strong>Name</strong> of the variable and the new <strong>Value</strong> you want to assign to it as inputs. For convenience in layouting, it returns this same value as an output. </p>
+        <p>Note that you have to connect the control input port to indicate <em>when</em> the variable should assigned, and optionally the control output port to indicate what to do after.</p>
+        <p>If a variable with that name doesn&#39;t yet exist, <strong>using a set node</strong> <strong>will create it</strong> <strong>.</strong></p>
+        <h3 id="is-variable-defined">Is Variable Defined</h3>
+        <p>The is variable defined units require the <strong>Name</strong> of the variable as an input and return return a <strong>Is Defined</strong> boolean an output.</p>
+        <p>They are useful to check if a variable has been created, and often, provide a fallback value if it hasn&#39;t</p>
+        <p>Note that you can do the same thing more easily by checking the Fallback box in the graph inspector for a Get Variable unit. This will add a Fallback input to the unit that will be returned if the variable hasn&#39;t been defined.</p>
+        <h3 id="dynamic-variables">Dynamic Variables</h3>
+        <p>Because the <strong>Name</strong> of the variable is a standard value input port, you can connect it to any other port that returns a string. This means that you can refer to &quot;dynamic variables&quot;, that is, variables whose reference may change during play mode.</p>
+        <h3 id="object-variables">Object Variables</h3>
+        <p>Object variable units require an additional input for the <strong>Source</strong>. That port indicates <em>on which</em> game object the variable you&#39;re referring to is defined. When left at its default value, they will look on the current object (self).</p>
+        <h3 id="dropdowns">Dropdowns</h3>
+        <p>You can use the kind and the name dropdowns to quickly configure the variable units.</p>
+        <p>The name suggestions are contextual. They are based on the existing variables of this kind and on the other variable units in the current graph.</p>
+        <p><img src="images/bolt-variables-ref6.gif" alt=""></p>
+        <h3 id="drag-and-drop">Drag and Drop</h3>
+        <p>You can drag &amp; drop items from the variable window directly into the graph to create matching units.</p>
+        <ul>
+        <li>By default, a Get unit will be created.</li>
+        <li>If the Alt key is held, a Set unit will be created.</li>
+        <li>If the Shiftkey is held, an Is Defined unit will be created.</li>
+        </ul>
+        <p><img src="images/bolt-variables-ref7.gif" alt=""></p>
+      </div>
+    </div>
+
+    <!--UNIT REFERENCE NULLS-->
+    <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="nulls">Nulls</h1>
+
+        <p>Under the Nulls category, you will find units that help you deal with the dreaded null value, which is just scripting lingo for &quot;nothing&quot;.</p>
+        <h3 id="null">Null</h3>
+        <p>The null node simply always returns null as a value. You will not need
+        it often, because leaving a Unity object reference field empty (&quot;None&quot;)
+        already means null.</p>
+        <h3 id="null-check">Null Check</h3>
+        <p>The null check is a shortcut for a branch on an equality comparison with
+        null. It can be useful to execute direct the flow in different
+        directions depending on whether a value is null.</p>
+        <p>For example, you could use it to handle a situation differently whether
+        a transform has a parent in the hierarchy or not.</p>
+        <h3 id="null-coalesce">Null Coalesce</h3>
+        <p>The null coalesce unit allows you to provide a fallback value in case
+        the original input is null.</p>
+        <p>For example, here, the null coalesce unit defines a default fallback
+        audio clip in case the one on the audio source was missing.</p>
+      </div>
+
+      <!--UNIT REFERENCE FORMULA-->
+      <div class="BOX">
+      <div class="PARAGRAPHE">
+        <h1 id="formula">Formula</h1>
+
+        <p><strong>Formula</strong> is a powerful unit that allows you to evaluate logical and mathematical expressions directly via a textual Formula and a list of Arguments.</p>
+        <p>Note: <strong>Performance</strong>: At the moment, using the formula unit is significantly
+        slower than using the operator units individually, because of the binary
+        tree traversal overhead (despite caching attempts). It is preferable to
+        avoid using this unit at every frame.</p>
+        <p>Most often, you&#39;ll want a formula to return either a boolean for logic, or a number for math, but formulas can return any type of value.</p>
+        <p>The first text field in the header is the formula itself.</p>
+        <p>The second text field is the amount of arguments. It&#39;s set to 2 by
+        default, giving us A and B as inputs. Formulas can have up to 10
+        arguments, which are always ordered alphabetically. If you add more,
+        they will be called B, C, D, E, and so forth.</p>
+        <p>For example, this formula returns a boolean indicating whether at least 10 seconds have elapsed since the start of the game and the current object&#39;s name is Player: (<em>because... reasons</em>).</p>
+        <h2 id="arguments">Arguments</h2>
+        <h3 id="variable-names">Variable Names</h3>
+        <p>You can also directly use variable names in the formula. For example, if
+        you have a graph variable named health, you
+        could return a boolean just by typing the formula health &gt; 50. The argument names are evaluated in the following order of priority:</p>
+        <ol>
+        <li>Alphabetical argument names (a - z)</li>
+        <li>Graph variable names</li>
+        <li>Object variable names</li>
+        <li>Scene variable names</li>
+        <li>Application variable names</li>
+        <li>Saved variable names</li>
+        </ol>
+        <h3 id="properties-and-methods">Properties and Methods</h3>
+        <p>You can retrieve the value of a property on an argument or variable by
+        using the [arg.prop] notation.</p>
+        <p>For example, if position is a Vector 3 object variable, you can check if it is
+        equal to zero with: [position.x] = 0.</p>
+        <p>You can also get the return value of parameterless methods with the [arg.Method()] notation.</p>
+        <p>Note that accessing properties and methods is not guaranteed to be
+        compatible with AOT platforms, because the AOT pre-build cannot generate
+        stubs for members that are only accessed by name.</p>
+        <h3 id="literals">Literals</h3>
+        <p>You can use the following literals:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Literal</th>
+        <th>Description</th>
+        <th>Example</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Number</td>
+        <td>An integer or float.</td>
+        <td>3.5</td>
+        </tr>
+        <tr>
+        <td>String</td>
+        <td>A piece of text between apostrophes.</td>
+        <td>&quot;Hello World!&quot;</td>
+        </tr>
+        <tr>
+        <td>Boolean</td>
+        <td>A boolean value.</td>
+        <td>true, false</td>
+        </tr>
+        <tr>
+        <td>Null</td>
+        <td>The null constant.</td>
+        <td>a != null</td>
+        </tr>
+        <tr>
+        <td>Delta Time</td>
+        <td>The Unity frame delta time.</td>
+        <td>30 * dt</td>
+        </tr>
+        <tr>
+        <td>Invert Delta Time</td>
+        <td>The inverse of the delta time.</td>
+        <td>30 / second</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="operators">Operators</h3>
+        <p>You can use every common logical and mathematical operator in formulas,
+        even the ones defined through custom operator overloading in script.
+        Here&#39;s an overview:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Operator</th>
+        <th>Operation</th>
+        <th>Rank</th>
+        <th>Result</th>
+        <th>Example</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>not, !</td>
+        <td>Logical Negation</td>
+        <td>Unary</td>
+        <td>The opposite of the operand.</td>
+        <td>not true</td>
+        </tr>
+        <tr>
+        <td>-</td>
+        <td>Numerical Negation</td>
+        <td>Unary</td>
+        <td>The negative of the operand.</td>
+        <td>-5</td>
+        </tr>
+        <tr>
+        <td>and, &amp;&amp;</td>
+        <td>Logical And</td>
+        <td>Binary</td>
+        <td>True if both operands are true.</td>
+        <td>(a &lt; 5) and (b > 3)</td>
+        </tr>
+        <tr>
+        <td>or, ||</td>
+        <td>Logical Or</td>
+        <td>Binary</td>
+        <td>True if either operand is true</td>
+        <td>(a &lt; 5) or (b > 3)</td>
+        </tr>
+        <tr>
+        <td>=, ==</td>
+        <td>Equality</td>
+        <td>Binary</td>
+        <td>True if the two operands are equal.</td>
+        <td>a = b</td>
+        </tr>
+        <tr>
+        <td>!=, &lt;></td>
+        <td>Inequality</td>
+        <td>Binary</td>
+        <td>True if the two operands are not equal.</td>
+        <td>a != b</td>
+        </tr>
+        <tr>
+        <td>&lt;, &lt;=, >, >=</td>
+        <td>Numeric Comparison</td>
+        <td>Binary</td>
+        <td>The result of a numeric comparison</td>
+        <td>a >= 10</td>
+        </tr>
+        <tr>
+        <td>+</td>
+        <td>Addition</td>
+        <td>Binary</td>
+        <td>The sum of the two operands.</td>
+        <td>a + 5</td>
+        </tr>
+        <tr>
+        <td>-</td>
+        <td>Subtraction</td>
+        <td>Binary</td>
+        <td>The difference between the two operands.</td>
+        <td>b - 3</td>
+        </tr>
+        <tr>
+        <td>*</td>
+        <td>Multiplication</td>
+        <td>Binary</td>
+        <td>The product of the two operands.</td>
+        <td>12 * a</td>
+        </tr>
+        <tr>
+        <td>/</td>
+        <td>Division</td>
+        <td>Binary</td>
+        <td>The quotient of the two operands.</td>
+        <td>b / 2</td>
+        </tr>
+        <tr>
+        <td>%</td>
+        <td>Modulo</td>
+        <td>Binary</td>
+        <td>The remainder of the division of the two operands.</td>
+        <td>a % 2</td>
+        </tr>
+        <tr>
+        <td>?:</td>
+        <td>If</td>
+        <td>Ternary</td>
+        <td>The left operand if the condition is true, otherwise the right operand.</td>
+        <td>(health > 0) ? &quot;Alive&quot; : &quot;Dead&quot;</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>All common bitwise operators like ~ and &gt;&gt; are also supported.</p>
+        <h3 id="functions">Functions</h3>
+        <p>You can also use any function from this table:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Name</th>
+        <th>Result</th>
+        <th>Example</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>abs</td>
+        <td>The absolute value of a specified number.</td>
+        <td>abs(-1)</td>
+        </tr>
+        <tr>
+        <td>acos</td>
+        <td>The angle whose cosine is the specified number.</td>
+        <td>acos(1)</td>
+        </tr>
+        <tr>
+        <td>asin</td>
+        <td>The angle whose sine is the specified number.</td>
+        <td>asin(0)</td>
+        </tr>
+        <tr>
+        <td>atan</td>
+        <td>The angle whose tangent is the specified number.</td>
+        <td>atan(0)</td>
+        </tr>
+        <tr>
+        <td>ceiling</td>
+        <td>The smallest integer greater than or equal to the specified number.</td>
+        <td>ceiling(1.5)</td>
+        </tr>
+        <tr>
+        <td>cos</td>
+        <td>The cosine of the specified angle.</td>
+        <td>cos(0)</td>
+        </tr>
+        <tr>
+        <td>exp</td>
+        <td>e raised to the specified power.</td>
+        <td>exp(0)</td>
+        </tr>
+        <tr>
+        <td>floor</td>
+        <td>The largest integer less than or equal to the specified number.</td>
+        <td>floor(1.5)</td>
+        </tr>
+        <tr>
+        <td>log</td>
+        <td>The logarithm of a specified number.</td>
+        <td>log(1, 10)</td>
+        </tr>
+        <tr>
+        <td>log10</td>
+        <td>The base 10 logarithm of a specified number.</td>
+        <td>log10(1)</td>
+        </tr>
+        <tr>
+        <td>max</td>
+        <td>The larger of two specified numbers.</td>
+        <td>max(1, 2)</td>
+        </tr>
+        <tr>
+        <td>min</td>
+        <td>The smaller of two numbers.</td>
+        <td>min(1, 2)</td>
+        </tr>
+        <tr>
+        <td>pow</td>
+        <td>A specified number raised to the specified power.</td>
+        <td>pow(3, 2)</td>
+        </tr>
+        <tr>
+        <td>round</td>
+        <td>Rounds a value to the nearest integer or specified number of decimal places.</td>
+        <td>round(3.222, 2)</td>
+        </tr>
+        <tr>
+        <td>sign</td>
+        <td>1 if the number is positive, -1 is if it negative.</td>
+        <td>sign(-10)</td>
+        </tr>
+        <tr>
+        <td>sin</td>
+        <td>The sine of the specified angle.</td>
+        <td>sin(0)</td>
+        </tr>
+        <tr>
+        <td>sqrt</td>
+        <td>The square root of a specified number.</td>
+        <td>sqrt(4)</td>
+        </tr>
+        <tr>
+        <td>tan</td>
+        <td>The tangent of the specified angle.</td>
+        <td>tan(0)</td>
+        </tr>
+        <tr>
+        <td>truncate</td>
+        <td>The integral part of a number.</td>
+        <td>truncate(1.7)</td>
+        </tr>
+        <tr>
+        <td>v2</td>
+        <td>Creates a 2D vector.</td>
+        <td>v2(0, 0)</td>
+        </tr>
+        <tr>
+        <td>v3</td>
+        <td>Creates a 3D vector.</td>
+        <td>v3(0, 0, 0)</td>
+        </tr>
+        <tr>
+        <td>v4</td>
+        <td>Creates a 4D vector.</td>
+        <td>v4(0, 0, 0, 0)</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
+
+  </body>
+</html>
